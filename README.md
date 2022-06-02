@@ -1,6 +1,6 @@
 # clevofan - Clevo Fan control module
 
-Kernel module that provides fan control of various Clevo mainboards via standard hwmon interfaces (for using with generic fan control softwares like lm-sensors, pwmconfig, fancontrol, ...).
+Kernel module that provides fan control for various Clevo mainboards via standard hwmon interfaces (to use with generic fan control softwares like lm-sensors, pwmconfig, fancontrol, ...).
 
 ## Supported models
 ```bash
@@ -18,7 +18,7 @@ P170SM:   not tested
   - Exposed hwmon device for reading fan speed provided by EC
 
 * Fan Speed Control
-  - Exposed hwmon PWM interface to make every fan control software capable to control the fan speed
+  - Exposed hwmon PWM interface to make every fan control software capable of controlling the fan speed
   - pwmX-enable possible values are <br>
   1 -> manual speed <br>
   2 -> default EC automatic speed
@@ -28,7 +28,7 @@ P170SM:   not tested
 * force_match [default:0] force driver to match with non-compatible mainboard, set number of fans to enable
   
 ## Please read CAREFULLY
-This module executes write operations on the mainboard's Embedded Controller (EC). Thus reading is totally secure, issuing fan speed commands can teoretically put EC in a bad state until system is rebooted. This is caused by the nature of fan speed command, because is splitted in two different calls to EC: first specifies the fan, second one the speed. If another module/acpi stuffs issues a command between those two calls, EC response/action is unpredictable.
+This module executes write operations on the mainboard's Embedded Controller (EC). Thus reading is totally secure, issuing fan speed commands can teoretically put EC in a bad state until system is rebooted. This is caused by the nature of fan speed command, because is splitted in two different calls to EC: first one specifies the fan, second one the speed. If another module/acpi stuffs issues a command between those two calls, EC response/action is unpredictable.
 
 ## Install
 ```bash
