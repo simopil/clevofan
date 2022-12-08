@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if (( $EUID != 0 )); then
+    echo "Script must be run as ROOT, exiting"
+    exit
+fi
+
+if ! [ -x "$(command -v dmidecode)" ]; then
+  echo "dmidecode is not installed, exiting"
+  exit
+fi
+
+board_manufacturer=`dmidecode -s baseboard-manufacturer -u`
+board_name=`dmidecode -s baseboard-product-name -u`
+read -n 1 -p "Please type number of fan(s): " fans
+
+fname=`sed 's/ //g' <<< $board_name`
+
+echo "DMI_BOARD_VENDOR = \"$board_manufacturer\"" >  $fname
+echo "DMI_BOARD_NAME   = \"$board_name\""         >> $fname
+echo "FANS_TO_CONTROL  = \"$fans\""               >> $fname
+               
+echo -e "\ndata saved to `pwd`/$fname"

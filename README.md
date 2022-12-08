@@ -8,7 +8,7 @@ W35_37ET: supported and completely tested
 W350SS:   not tested
 P170SM:   not tested
 ```
-* Teoretically supports all Clevo laptops but I have to add correct DMI_BOARD_NAME string and fan number to make module load without force_match parameter. Please open an issue "Add support for *model*" and provide test results, fan number and DMI_BOARD_NAME provided by dmidecode command and I'll add support (look "parameters" section for tests).
+* Teoretically supports all Clevo laptops but I have to add correct DMI_BOARD_NAME string and fan number to make module load without force_match parameter. Please open an issue "Add support for *model*" and attach the output file of *dmi_info_dump* script, then I'll add support (look "parameters" section for tests).
 
 ## Features
 
